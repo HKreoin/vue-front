@@ -48,7 +48,9 @@ const deleteItem = async id => {
           <td>{{ item.parent_department?.name }}</td>
           <td><a class="round-btn">Редактировать</a></td>
           <td>
-            <button @click="deleteItem(item.id)">Удалить</button>
+            <button class="round-btn" @click="deleteItem(item.id)">
+              Удалить
+            </button>
           </td>
         </tr>
       </tbody>
