@@ -58,4 +58,9 @@ const deleteItem = async id => {
       </tbody>
     </table>
   </div>
+  <div class="flex justify-end">
+    <router-link class="round-btn" to="/employees/new"
+      >Добавить отдел</router-link
+    >
+  </div>
 </template>
