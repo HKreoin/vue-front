@@ -2,16 +2,17 @@
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import { baseUrl } from '@/config'
+import { useRoute } from 'vue-router'
 
-const employees = ref([])
+const route = useRoute()
+
+const item = ref([])
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get(`${baseUrl}/employees`)
-    employees.value = data
-    console.log(data)
-
-    console.log(employees)
+    const { data } = await axios.get(`${baseUrl}/employees/${route.params.id}`)
+    item.value = data
+    console.log(item.value)
   } catch (error) {
     console.log(error)
   }
@@ -40,16 +41,12 @@ const deleteItem = async id => {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in employees" :key="item.id">
+        <tr>
           <td>{{ item.id }}</td>
-          <td>
-            <router-link :to="`/employees/${item.id}`">
-              {{ item.full_name }}
-            </router-link>
-          </td>
+          <td>{{ item.full_name }}</td>
           <td>{{ item.description }}</td>
-          <td>{{ item.profession.name }}</td>
-          <td>{{ item.department.name }}</td>
+          <td>{{ item.profession?.name }}</td>
+          <td>{{ item.department?.name }}</td>
           <td><a class="round-btn">Редактировать</a></td>
           <td>
             <button @click="deleteItem(item.id)">Удалить</button>

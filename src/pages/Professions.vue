@@ -40,7 +40,7 @@ const deleteItem = async id => {
         <tr v-for="item in professions" :key="item.id">
           <td>{{ item.id }}</td>
           <td>
-            <router-link :to="`/profession/${item.id}`">
+            <router-link :to="`/professions/${item.id}`">
               {{ item.name }}
             </router-link>
           </td>

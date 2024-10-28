@@ -41,7 +41,11 @@ const deleteItem = async id => {
       <tbody>
         <tr v-for="item in departments" :key="item.id">
           <td>{{ item.id }}</td>
-          <td>{{ item.name }}</td>
+          <td>
+            <router-link :to="`/departments/${item.id}`">
+              {{ item.name }}
+            </router-link>
+          </td>
           <td>{{ item.description }}</td>
           <td>{{ item.parent_department?.name }}</td>
           <td><a class="round-btn">Редактировать</a></td>

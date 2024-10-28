@@ -31,8 +31,15 @@ const router = createRouter({
     },
     {
       path: '/professions/:id',
-      name: 'profession',
       component: () => import('./pages/Profession.vue'),
+    },
+    {
+      path: '/departments/:id',
+      component: () => import('./pages/Department.vue'),
+    },
+    {
+      path: '/employees/:id',
+      component: () => import('./pages/Employee.vue'),
     },
   ],
 })
