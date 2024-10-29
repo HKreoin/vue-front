@@ -17,29 +17,53 @@ const router = createRouter({
     {
       path: '/professions',
       name: 'professions',
-      component: () => import('./pages/Professions.vue'),
+      component: () => import('./pages/professions/Index.vue'),
     },
     {
       path: '/departments',
       name: 'departments',
-      component: () => import('./pages/Departments.vue'),
+      component: () => import('./pages/depatments/Index.vue'),
     },
     {
       path: '/employees',
       name: 'employees',
-      component: () => import('./pages/Employees.vue'),
+      component: () => import('./pages/employees/Index.vue'),
     },
     {
       path: '/professions/:id',
-      component: () => import('./pages/Profession.vue'),
+      component: () => import('./pages/professions/Show.vue'),
     },
     {
       path: '/departments/:id',
-      component: () => import('./pages/Department.vue'),
+      component: () => import('./pages/depatments/Show.vue'),
     },
     {
       path: '/employees/:id',
-      component: () => import('./pages/Employee.vue'),
+      component: () => import('./pages/employees/Show.vue'),
+    },
+    {
+      path: '/employees/:id/edit',
+      component: () => import('./pages/employees/Edit.vue'),
+    },
+    {
+      path: '/departments/:id/edit',
+      component: () => import('./pages/depatments/Edit.vue'),
+    },
+    {
+      path: '/professions/:id/edit',
+      component: () => import('./pages/professions/Edit.vue'),
+    },
+    {
+      path: '/employees/create',
+      component: () => import('./pages/employees/Create.vue'),
+    },
+    {
+      path: '/departments/create',
+      component: () => import('./pages/depatments/Create.vue'),
+    },
+    {
+      path: '/professions/create',
+      component: () => import('./pages/professions/Create.vue'),
     },
   ],
 })
