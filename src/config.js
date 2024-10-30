@@ -1,1 +1,1 @@
-export const baseUrl = 'https://itprom.onrender.com/api'
+export const baseUrl = import.meta.env.VITE_API_URL
