@@ -22,7 +22,6 @@ onMounted(async () => {
       `${baseUrl}/departments/${route.params.id}`,
     )
     form.value = data
-    form.value.parent_department_id = data.parent_department?.id
     const data2 = await axios.get(`${baseUrl}/departments`)
     console.log(data)
     console.log(data2.data)
