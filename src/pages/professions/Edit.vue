@@ -46,8 +46,7 @@ const submit = async () => {
           type="text"
           rows="5"
           v-model="form.description"
-        ></textarea
-        >>
+        ></textarea>
       </div>
 
       <div>
