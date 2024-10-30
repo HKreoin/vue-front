@@ -15,7 +15,7 @@ onMounted(async () => {
 })
 
 const deleteItem = async id => {
-  axios.delete(`${baseUrl}/employees/${id}`)
+  await axios.delete(`${baseUrl}/employees/${id}`)
 }
 </script>
 
@@ -27,9 +27,9 @@ const deleteItem = async id => {
         <tr>
           <th>id</th>
           <th>ФИО</th>
-          <th>Примечание</th>
           <th>Профессия</th>
           <th>Отдел</th>
+          <th>Примечание</th>
           <th>Редактировать</th>
           <th>Удалить</th>
         </tr>
@@ -42,9 +42,9 @@ const deleteItem = async id => {
               {{ item.full_name }}
             </router-link>
           </td>
-          <td>{{ item.description }}</td>
           <td>{{ item.profession.name }}</td>
           <td>{{ item.department.name }}</td>
+          <td>{{ item.description }}</td>
           <td>
             <router-link class="round-btn" :to="`/employees/${item.id}/edit`">
               Редактировать

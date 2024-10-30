@@ -8,6 +8,17 @@ const route = useRoute()
 
 const item = ref([])
 
+const departments = ref([])
+
+onMounted(async () => {
+  try {
+    const { data } = await axios.get(`${baseUrl}/departments`)
+    departments.value = data
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 onMounted(async () => {
   try {
     const { data } = await axios.get(
@@ -20,7 +31,7 @@ onMounted(async () => {
 })
 
 const deleteItem = async id => {
-  axios.delete(`${baseUrl}/departments/${id}`)
+  await axios.delete(`${baseUrl}/departments/${id}`)
 }
 </script>
 
@@ -32,8 +43,8 @@ const deleteItem = async id => {
         <tr>
           <th>id</th>
           <th>Наименование</th>
-          <th>Примечание</th>
           <th>Родительский отдел</th>
+          <th>Примечание</th>
           <th>Редактировать</th>
           <th>Удалить</th>
         </tr>
@@ -42,8 +53,13 @@ const deleteItem = async id => {
         <tr>
           <td>{{ item.id }}</td>
           <td>{{ item.name }}</td>
+          <td>
+            {{
+              departments.filter(d => d.id === item.parent_department_id)[0]
+                ?.name
+            }}
+          </td>
           <td>{{ item.description }}</td>
-          <td>{{ item.parent_department?.name }}</td>
           <td>
             <router-link class="round-btn" :to="`/departments/${item.id}/edit`">
               Редактировать

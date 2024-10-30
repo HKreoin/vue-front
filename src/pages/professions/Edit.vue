@@ -23,9 +23,9 @@ onMounted(async () => {
   }
 })
 
-const submit = () => {
+const submit = async () => {
   console.log(form.value)
-  axios.put(`${baseUrl}/professions/${route.params.id}`, form.value)
+  await axios.put(`${baseUrl}/professions/${route.params.id}`, form.value)
   router.push({ name: 'professions' })
 }
 </script>
@@ -41,7 +41,13 @@ const submit = () => {
 
       <div class="mb-6">
         <label>Примечание</label>
-        <input type="text" v-model="form.description" />
+        <textarea
+          class="resize-none"
+          type="text"
+          rows="5"
+          v-model="form.description"
+        ></textarea
+        >>
       </div>
 
       <div>

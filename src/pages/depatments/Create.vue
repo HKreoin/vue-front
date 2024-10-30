@@ -17,15 +17,17 @@ const form = ref({
 onMounted(async () => {
   try {
     const { data } = await axios.get(`${baseUrl}/departments`)
-    departments.value = data
+    departments.value = data.filter(
+      department => department.id !== form.value.id,
+    )
   } catch (error) {
     console.log(error)
   }
 })
 
-const submit = () => {
+const submit = async () => {
   console.log(form.value)
-  axios.post(`${baseUrl}/departments`, form.value)
+  await axios.post(`${baseUrl}/departments`, form.value)
   router.push({ name: 'departments' })
 }
 </script>
@@ -40,11 +42,6 @@ const submit = () => {
       </div>
 
       <div class="mb-6">
-        <label>Примечание</label>
-        <input type="text" v-model="form.description" />
-      </div>
-
-      <div class="mb-6">
         <label>Родительский отдел</label>
         <select class="p-2.5" v-model="form.parent_department_id">
           <option
@@ -56,6 +53,17 @@ const submit = () => {
           </option>
         </select>
       </div>
+
+      <div class="mb-6">
+        <label>Примечание</label>
+        <textarea
+          class="resize-none"
+          type="text"
+          rows="5"
+          v-model="form.description"
+        ></textarea>
+      </div>
+
       <div>
         <button class="primary-btn" :disabled="form.processing">Создать</button>
       </div>

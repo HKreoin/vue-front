@@ -35,9 +35,9 @@ const form = ref({
   department_id: null,
 })
 
-const submit = () => {
+const submit = async () => {
   console.log(form.value)
-  axios.post(`${baseUrl}/employees`, form.value)
+  await axios.post(`${baseUrl}/employees`, form.value)
   router.push({ name: 'employees' })
 }
 </script>
@@ -49,11 +49,6 @@ const submit = () => {
       <div class="mb-6">
         <label>ФИО</label>
         <input type="text" v-model="form.full_name" />
-      </div>
-
-      <div class="mb-6">
-        <label>Примечание</label>
-        <input type="text" v-model="form.description" />
       </div>
 
       <div class="mb-6">
@@ -80,6 +75,16 @@ const submit = () => {
             {{ department.name }}
           </option>
         </select>
+      </div>
+
+      <div class="mb-6">
+        <label>Примечание</label>
+        <textarea
+          class="resize-none"
+          type="text"
+          rows="5"
+          v-model="form.description"
+        ></textarea>
       </div>
 
       <div>

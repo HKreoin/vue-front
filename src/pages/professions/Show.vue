@@ -20,7 +20,7 @@ onMounted(async () => {
 })
 
 const deleteItem = async id => {
-  axios.delete(`${baseUrl}/professions/${id}`)
+  await axios.delete(`${baseUrl}/professions/${id}`)
 }
 </script>
 
